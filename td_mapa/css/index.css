@@ -1,0 +1,40 @@
+#figuras {
+  list-style: none;
+}
+
+.arriba {
+  transform: scale(1.2);
+}
+
+.abajo {
+  transform: scale(0.8);
+}
+
+.borde {
+  border: 1px solid red;
+}
+
+.card-contenedor {
+  display: flex;
+}
+
+.card,.card-modificar {
+  display: block;
+  max-width: 400px;
+}
+
+.card-modificar {
+  display: grid;
+}
+
+.card-modificar > * {
+  margin-bottom: 10px;
+}
+
+.container {
+  display: none;
+}
+
+.container_noOculto {
+  display: block;
+}

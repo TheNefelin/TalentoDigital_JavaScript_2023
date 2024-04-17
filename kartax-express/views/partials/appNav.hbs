@@ -1,0 +1,50 @@
+<nav>
+    <section class="navBar-contenedor">
+        <a href="/" class="navBar-logo">
+            {{#each negocio}}
+            <img src={{logo}}>
+            <h1>{{nombre}}</h1>
+            {{/each}}
+        </a>
+        <div class="navBar-btn">
+            <div class="navBar-A"></div>
+            <div class="navBar-B"></div>
+            <div class="navBar-C"></div>
+        </div>
+        <div class="navBar-links">
+            <a id="RRSS">RRSS</a>
+            <a href="/iniciarSesion">Iniciar Sesión</a>
+            <a href="/registrarse">Registrarse</a>
+            <a href="/encuesta">Encuesta</a>
+        </div>
+    </section>
+</nav>
+
+{{> appRRSS}}
+
+<script>
+    const linkContainer = document.querySelector(".navBar-links"); 
+
+    const burger = document.querySelector(".navBar-btn");
+    burger.addEventListener("click", () => {
+        navBar();
+    });
+
+    const arrLinks = document.querySelectorAll(".navBar-links a");
+    arrLinks.forEach(e => {
+        e.addEventListener("click", () => {
+            navBar();
+        });
+    });
+
+    function navBar() {
+        burger.classList.toggle("navBar-btn_click");
+        linkContainer.classList.toggle("navBar-links_noOcultar");
+    };
+
+    const RRSS =  document.querySelector("#RRSS");
+    RRSS.addEventListener("click", () => {
+        const rrssContenedor =  document.querySelector(".rrss-contenedor");
+        rrssContenedor.classList.toggle("rrss-contenedor_noOcultar")
+    });
+</script>

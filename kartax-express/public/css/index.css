@@ -1,0 +1,1202 @@
+/* -- Fuentes ----------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+@font-face {
+    font-family: fuenteGeneral;
+    src: url("../font/Merriweather-Regular.ttf");
+}
+
+@font-face {
+    font-family: fuenteLogo;
+    src: url("../font/PermanentMarker-Regular.ttf");
+}
+
+/* -- configuraciones generals ------------------------- */
+/* ----------------------------------------------------- */
+:root {
+    --colorBase01: rgb(0, 0, 0);
+    --colorBase02: rgb(255, 255, 255);
+    --colorBase03: rgb(102, 102, 102);
+    --colorBase04: rgba(0, 0, 0, 0.5);
+
+    --color01: rgb(32, 148, 243);
+    --color02: rgb(190, 0, 29);
+    /* --color02: rgb(255, 102, 102);  */
+    --color03: rgb(252, 161, 32);
+    --color04: rgb(0, 255, 255);
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body {
+    font-family: fuenteGeneral;
+    font-size: 16px;
+    color: var(--colorBase01);
+    overflow-x: hidden;
+    background-color: rgb(26, 26, 26);
+}
+
+a {
+    color: var(--colorBase02);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+a:hover {
+    color: var(--color03);
+}
+
+/* -- btn generales ------------------------------------ */
+/* ----------------------------------------------------- */
+.btn {
+	width: 80%;
+	height: 40px;
+    max-width: 300px;
+    margin: 10px auto 10px auto;
+	background: var(--colorBase01);
+	color: var(--colorBase02);
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .3s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.btn:active {
+    scale: 0.9;
+}
+
+.btn span {
+	position: relative;
+	z-index: 2;
+	transition: .3s ease all;
+}
+
+.btn.animacion::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc(-100% - 80px);
+	border-bottom: 80px solid var(--color03);
+	border-right: 80px solid transparent;
+	transition: .4s ease-in-out all;
+}
+
+.btn.animacion:hover::after {
+	left: 0;
+}
+
+.error {
+    color: var(--color02);
+    text-align: center;
+}
+
+.btn2 {
+	width: 80%;
+	height: 40px;
+    max-width: 300px;
+    margin: 10px auto 10px auto;
+	background: var(--color03);
+	color: var(--colorBase01);
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .3s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.btn2:active {
+    scale: 0.9;
+}
+
+/* -- navBar ------------------------------------------- */
+/* ----------------------------------------------------- */
+nav {
+    position: fixed;
+    width: 100vw;
+    z-index: 3;
+}
+
+.navBar-contenedor {
+    background-color: var(--colorBase01);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0.4rem;
+}
+
+/* navBar-logo --------------------- */
+.navBar-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.navBar-logo img {
+    height: 3rem;
+    margin-right: 0.5rem;
+}
+
+.navBar-logo h1 {
+    font-family: fuenteLogo;
+    margin: 0.5rem;
+    animation: logoTxtAnim 4s infinite;
+}
+
+@keyframes logoTxtAnim {
+    0% {
+        color: var(--color02);
+    }
+    33.3% {
+        color: var(--color03);
+    }
+    66.6% {
+        color: var(--colorBase02);
+    }
+    100% {
+        color: var(--color02);
+    }
+  }
+
+/* navBar-btn ---------------------- */
+.navBar-btn {
+    cursor: pointer;
+    display: none;
+    padding-right: 2rem;
+}
+
+.navBar-A, .navBar-B, .navBar-C {
+    width: 2rem;
+    height: 5px;
+    background-color: var(--colorBase02);
+    border-radius: 4px;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.navBar-btn_click .navBar-A {
+    transform: translateY(11px) rotate(45deg);
+    background-color: var(--color03);
+}
+
+.navBar-btn_click .navBar-B {
+    opacity: 0;
+}
+
+.navBar-btn_click .navBar-C {
+    transform: translateY(-11px) rotate(-45deg);
+    background-color: var(--color03);
+}
+
+/* navBar-links -------------------- */
+.navBar-links {
+    margin-right: 2rem;
+}
+
+.navBar-links a {
+    margin-left: 1rem;
+}
+
+/* navBar comportamineto ----------- */
+@media (max-width: 767.98px) {
+    body {
+        font-size: 14px;
+    }
+
+    .navBar-btn {
+        display: block;
+    }
+
+    .navBar-links {
+        position: fixed;
+        display: grid;
+        top: 3.32rem;
+        background-color: var(--colorBase01);
+        text-align: center;
+        width: 100%;
+        left: 100%;
+        transition: 0.4s;
+    }
+
+    .navBar-links_noOcultar {
+        left: 0;
+    }
+
+    .navBar-links a {
+        padding: 1rem;
+    }
+
+    .admin2-navegacion {
+        left: -4rem;
+    }
+
+    .admin2-navegacion.admin2-navegacion_activo {
+        left: 0;
+        width: 4rem;
+    }
+
+    .admin2-navegacion:hover.admin2-navegacion_activo {
+        width: 100%;
+    }
+}
+
+/* -- paralax ------------------------------------------ */
+/* ----------------------------------------------------- */
+.paralax {
+    background-image: url("../img/kartax/fondo.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--colorBase01);
+    height: 100vh;
+}
+
+/* -- slider ------------------------------------------- */
+/* ----------------------------------------------------- */
+.slider-section {
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    position: relative;
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-x: hidden;
+}
+
+.slider-contenedor {
+    display: inline-flex;
+    transition: transform 0.3s ease-out;
+}
+
+.slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    cursor: grab;
+    transition: transform 0.3s ease-out;
+}
+
+.slide:active {
+    cursor: grabbing;
+    transform: scale(0.9);
+}
+
+.slide h1 {
+    position: absolute;
+    top: 0;
+    left: 5vw;
+    min-width: 70vw;
+    color: var(--color03);
+    background: linear-gradient(90deg, var(--colorBase02) 0%, rgba(255, 255, 255, 0.577) 50%, rgba(0, 0, 0, 0) 100%);
+    text-shadow: 0 0 3px var(--colorBase01), 0 0 5px var(--colorBase01);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.slide img {
+    border-radius: 0.5rem;
+    width: 92%;
+    height: 20rem;
+    object-fit: cover;
+    box-shadow: 5px 5px 50px -1px var(--colorBase01);
+    user-select: none;
+}
+
+/* -- Acordion ----------------------------------------- */
+/* ----------------------------------------------------- */
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.acordion-list {
+    max-width: 800px;
+    margin: 0 1rem 1rem 1rem;
+}
+
+.acordion-list-titulo {
+    background-color: var(--color02);
+    color: var(--colorBase02);
+    text-align: center;
+    outline: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    animation-name: acordionSize;
+    animation-duration: 0.5s;
+}
+
+.acordion {
+    background-color: var(--colorBase01);
+    color: var(--colorBase02);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.4s;
+    animation-name: acordionSize;
+    animation-duration: 1s;
+}
+
+@keyframes acordionSize {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+.active, .acordion:hover {
+    background-color: var(--color03);
+}
+
+.acordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.acordion-contenido {
+    padding: 0 18px;
+    background-color: var(--colorBase02);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    display: grid;
+    text-align: justify;
+    margin-bottom: 1px;
+  }
+
+.acordion-contenido-img {
+    height: 200px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+/* -- loading ------------------------------------------ */
+/* ----------------------------------------------------- */
+.loading {
+    display: flex; 
+    justify-content: center;
+}
+
+.loading > img {
+    height: 15rem;
+}
+
+.loading-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    padding: 5rem;
+    animation: animColor 10s linear infinite;
+}
+
+.loading-contenedor2 {
+    position: fixed;
+    z-index: 4;
+    background-color: var(--colorBase01);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -100%;
+    transition: 0.3s;
+}
+
+.loading-contenedor2_visible {
+    left: 0;
+}
+
+@keyframes animColor {
+    0% {
+        filter: hue-rotate(0deg);
+    } 100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.loading {
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+}
+
+.loading span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(18deg * var(--i)));
+}
+
+.loading span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: var(--color03);
+    box-shadow: 
+        0 0 10px var(--color02),
+        0 0 20px var(--color02),
+        0 0 40px var(--color02),
+        0 0 60px var(--color02),
+        0 0 80px var(--color02),
+        0 0 100px var(--color02);
+    animation: animSize 1s linear infinite;
+    animation-delay: calc(0.05s * var(--i));
+}
+
+@keyframes animSize {
+    0% {
+        transform: scale(1);
+    } 80%, 100% {
+        transform: scale(0);
+    }
+}
+
+/* -- carrito y pedidosCarrito ------------------------- */
+/* ----------------------------------------------------- */
+.carrito {
+    bottom: 100px;
+    background-color: var(--color03);
+}
+
+.pedidosCarrito {
+    bottom: 180px;
+    background-color: var(--colorBase01);
+}
+
+.carrito, .pedidosCarrito {
+    position: fixed;
+    right: -2px;
+    border: 2px solid var(--colorBase02);
+    border-radius: 25% 0 0 25%;
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.3s;
+}
+
+.carrito_ocultar {
+    display: none;
+}
+
+.carrito:hover, .pedidosCarrito:hover {
+    transform: scale(1.2);
+}
+
+.carrito-cont, .pedidosCarrito-cont {
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    margin: -10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color02);
+    color: var(--colorBase02);
+    border: 2px solid var(--colorBase02);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrito img {
+    width: 50px;
+    height: 50px;
+}
+
+.pedidosCarrito img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* -- comanda y pedidos -------------------------------- */
+/* ----------------------------------------------------- */
+.comanda, .pedidos {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 4;
+    color: var(--colorBase02);
+    background-color: var(--colorBase01);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+
+.comanda-visible, .pedidos-visible {
+    left: 0;
+}
+
+.comanda-cabecera, .pedidos-cabecera {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.comanda-cabecera > img, .pedidos-cabecera > img {
+    height: 2rem;
+}
+
+.comanda-btn {
+    color: var(--colorBase02);
+    background-color: var(--color02);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.comanda-btn2 {
+    height: 3rem;
+    min-width: 3rem;
+    background-color: var(--color03);
+    color: var(--colorBase02);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.comanda-item, .pedidos-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem;
+    overflow-y: scroll;
+    max-height: 60vh;
+}
+
+.pedidos-item-li_check {
+    background-color: var(--color02);
+}
+
+.comanda-item li, .pedidos-item li {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--colorBase03);
+    height: 2rem;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    /* padding: 10px 70px 0 10px; */
+}
+
+.comanda-item li:hover, .pedidos-item li:hover {
+    background-color: var(--color02);
+}
+
+.pedidos-item input {
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    transform: scale(1.5);
+}
+
+.comanda-titulo {
+    color: var(--color03);
+} 
+
+.comanda-total, .pedidos-total {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.comanda-total strong, .pedidos-total strong {
+    color: var(--color03);
+}
+
+/* -- login -------------------------------------------- */
+/* ----------------------------------------------------- */
+.sesion-contenedor {
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.sesion {
+    color: var(--colorBase02);
+    background-color: var(--colorBase04);
+    display: grid;
+    gap: 1rem;
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.sesion h2 {
+    color: var(--color03);
+}
+
+.sesion-btn {
+    color: var(--colorBase02);
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.sesion-btn:hover {
+    color: var(--color03);
+}
+
+/* -- obj absoluto ------------------------------------- */
+/* ----------------------------------------------------- */
+.objAbsoluto-admin {
+    display: flex;
+    background-color: var(--colorBase04);
+}
+
+.objAbsoluto-menu {
+    max-width: 15rem;
+    text-align: center;
+}
+
+.objAbsoluto-menu > * {
+    margin-top: 1rem;
+}
+
+.objAbsoluto-error {
+    color: var(--color02);
+}
+
+.objAbsoluto-contenedor {
+    position: relative;
+    background-color: var(--colorBase03);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.objAbsoluto {
+    position: absolute;
+    display: grid;
+    cursor: move;
+    text-align: center;
+
+}
+
+.objAbsoluto div {
+    background-color: var(--color03);
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem 1rem;
+    border: 2px solid;
+}
+
+.objAbsoluto span {
+    background-color: var(--colorBase02);
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid;
+}
+
+/* -- admin menu --------------------------------------- */
+/* ----------------------------------------------------- */
+.admin-menu {
+    display: flex;
+    justify-content: center;
+    background-color: var(--colorBase01);
+}
+
+.admin-menu > form {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.admin-menu img {
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-menu > form > *:hover {
+    scale: calc(1.1);
+}
+
+/* -- admin 2 ------------------------------------------ */
+/* ----------------------------------------------------- */
+.admin2-btn-contenedor {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    color: var(--colorBase02);
+    background-color: var(--colorBase01);
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin2-navegacion {
+    position: fixed;
+    width: 4rem;
+    height: 100%;
+    background-color: var(--colorBase01);
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.admin2-img {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.admin2-img img {
+    width: 3rem;
+}
+
+.admin2-navegacion:hover, .admin2-navegacion_activo {
+    width: 18rem;
+}
+
+.admin2-navegacion ul {
+    position: absolute;
+    padding: 0;
+    width: 18rem;
+}
+
+.admin2-navegacion li {
+    position: relative;
+    width: 18rem;
+    list-style: none;
+}
+
+.admin2-navegacion li:hover {
+    background-color: var(--colorBase03);
+}
+
+.admin2-navegacion a {
+    display: flex;
+}
+
+.admin2-icon {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    line-height: 4rem;
+    text-align: center;
+}
+
+.admin2-icon .fa {
+    font-size: 2rem;
+}
+
+.admin2-titulo {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    padding: 0 1rem;
+    line-height: 4rem;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.admin2-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--colorBase01);
+    cursor: pointer;
+}
+
+.admin2-btn:hover {
+    background-color: var(--colorBase03);
+}
+
+.admin2-btn:before {
+    content: "\f0c9";
+    font-family: fontAwesome;
+    position: absolute;
+    font-size: 2rem;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    line-height: 4rem;
+    text-align: center;
+    color: var(--colorBase02);
+}
+
+.admin2-btn_active:before {
+    content: "\f00d";
+    color: var(--color03);
+}
+
+/* @medias relacionados*/
+
+/* -- admin 2 - contenedor ----------------------------- */
+/* ----------------------------------------------------- */
+.admin2-contenedor {
+    color: var(--colorBase02);
+    padding-top: 4rem;
+}
+
+.admin2-contenedor-titulo {
+    color: var(--color03);
+}
+
+.admin2-contenedor-titulo > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.admin2-mantenedor {
+    display: flex;
+    justify-content: center;
+}
+
+.admin2-mantenedor table {
+    font-size: 0.8rem;
+    width: 80%;
+    table-layout: auto;
+    border-collapse: collapse;
+    background-color: var(--colorBase04);
+    margin-right: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.admin2-mantenedor th {
+    color: var(--color03);
+}
+
+.admin2-mantenedor tr:hover {
+    background-color: var(--colorBase03);
+}
+
+.admin2-mantenedor td, .admin2-mantenedor th {
+    text-align: center;
+    padding: 0.5rem 0;
+    border: 1px solid var(--colorBase03);
+}
+
+.admin2-mantenedor-btn {
+    cursor: pointer;
+    color: var(--color04);
+}
+
+.admin2-modal {
+    position: fixed;
+    z-index: 3;
+    right: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--colorBase04);
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.admin2-modal_visible {
+    right: 0;
+}
+
+.admin2-modal > div {
+    display: flex;
+    justify-content: right;
+    padding: 1rem;
+    color: var(--color03);
+    cursor: pointer;
+}
+
+.admin2-modal > h2 {
+    text-align: center;
+    color: var(--color03);
+}
+
+.admin2-modal-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    gap: 1rem; 
+}
+
+.admin2-modal-contenedor img {
+    width: 100%; 
+    height: 100%;
+    max-width: 15rem;
+    max-height: 15rem;
+    background-color: var(--colorBase01);
+    padding: 1rem;
+}
+
+.admin2-modal-contenedor form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.admin2-modal-contenedor input {
+    width: 100%;
+}
+
+/* .adminNegocio-frm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorBase04);
+    color: var(--colorBase02);
+    margin: 1rem;
+    padding: 1rem;
+    gap: 1rem; 
+    border-radius: 8px;
+}
+
+.adminNegocio-frm form {
+    color: var(--colorBase02);
+    display: flex;
+    flex-direction: column;
+}
+
+.adminNegocio-frm input {
+    width: 100%;
+}
+
+.adminNegocio-frm img {
+    width: 100%; 
+    height: 100%;
+    max-width: 15rem;
+    max-height: 15rem;
+    background-color: var(--colorBase01);
+    padding: 1rem;
+}
+
+.adminNegocio-negocio, .adminNegocio-usuario {
+    color: var(--color03);
+}
+    
+.adminNegocio-negocio > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+} */
+
+
+/* -- rrss --------------------------------------------- */
+/* ----------------------------------------------------- */
+.rrss-contenedor {
+    position: fixed;
+    left: -10rem;
+    z-index: 2;
+    transition: 0.3s;
+}
+
+.rrss-contenedor_noOcultar {
+    top: 0;
+    left: 0;
+}
+
+.rrss {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.5rem;
+}
+
+.rrss img {
+    cursor: pointer;
+    height: 4rem;
+    transition: 0.3s;
+}
+
+.rrss img:hover {
+    scale: calc(1.1);
+}
+
+/* -- footer ------------------------------------------- */
+/* ----------------------------------------------------- */
+.footer {
+    background-color: var(--colorBase03);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100% , 15rem), 1fr));
+}
+
+.footer div {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 1rem;
+    color: var(--color04);
+}
+
+/* ---Index -------------------------------------------- */
+/* ----------------------------------------------------- */
+.pageMain {
+    padding-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100% , 23rem), 1fr));
+}
+
+.pageMain h1 {
+    color: var(--color03);
+    text-align: center;
+}
+
+.pageMain section {
+    color: var(--colorBase02);
+    background-color: var(--colorBase04);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.pagePhone {
+    background-color: var(--colorBase04);
+    display: grid;
+    justify-content: center;
+}
+
+.pagePhone a {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* -- celular ------------------------------------------ */
+/* ----------------------------------------------------- */
+.phone {
+    background-color: var(--colorBase01);
+    border-radius: 40px;
+    width: 320px;
+    height: 600px;
+    Display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 30px 50px 100px var(--colorBase03);
+}
+.content {
+    border: 1px solid var(--colorBase02);
+    border-radius: 20px;
+    width: 94%;
+    height: 91%;
+    background-color: var(--colorBase02);
+    overflow: hidden;
+}
+
+/* -- fx index ----------------------------------------- */
+/* ----------------------------------------------------- */
+.fx-linterna {
+    background-color: red;
+}
+
+.fx-hexa {
+    position: relative;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+    width: 100px;
+    height: 110px;
+    background: #111;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: 2s;
+}
+
+.fx-hexa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.02);
+    z-index: 1000;
+}
+
+.fx-hexa::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    background: #111;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.fx-hexa:hover {
+    background: #0f0;
+    transition: 0s;
+}
+
+.fx-container {
+    animation: anime 2.5s linear infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.stringOrRow {
+    display: inline-flex;
+    margin-top: -32px;
+    margin-left: -50px;
+}
+
+.stringOrRow:nth-child(even) {
+    margin-left: 1px;
+}
+
+@keyframes anime {
+
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* ----------------------------------------------------- */
+/* ----------------------------------------------------- */

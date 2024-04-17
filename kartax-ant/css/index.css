@@ -1,0 +1,483 @@
+
+/* -- Fuentes ----------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+@font-face {
+    font-family: fuenteCursiva;
+    src: url("../fuente/Caveat-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: fuenteGeneral;
+    src: url("../fuente/Merriweather-Regular.ttf");
+}
+
+@font-face {
+    font-family: fuenteLogo;
+    src: url("../fuente/PermanentMarker-Regular.ttf");
+}
+
+:root {
+    --colorNavBarFondo: rgb(9, 13, 24);
+    --colorLink: white;
+    --colorLinkHover: rgb(252, 161, 32);
+    --colorLLamativo: rgb(190, 0, 29);
+    --colorTransparente: rgba(255, 255, 255, 0.7);
+
+    --colorComandaFondo: black;
+    --colorComandaLinea: rgb(28, 28, 28);
+}
+
+/* -- Config Elementos Generales ---------------------------------- */
+/* ---------------------------------------------------------------- */
+* {
+    font-family: fuenteGeneral;
+}
+
+/* -- body -----------------------------*/
+body {
+    background-color: var(--colorBtn);
+    background-image: url("../img/fondo_01.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* -- a --------------------------------*/
+a {
+    text-decoration: none;
+    color: var(--colorLink);
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--colorLinkHover);
+    font-size: 1.2em;
+}
+
+/* -- button ---------------------------*/
+.btn {
+	width: 80%;
+	height: 40px;
+    max-width: 300px;
+    margin: 10px auto 10px auto;
+	background: var(--colorNavBarFondo);
+	color: var(--colorLink);
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .3s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.btn:active {
+    scale: 0.9;
+}
+
+.btn span {
+	position: relative;
+	z-index: 2;
+	transition: .3s ease all;
+}
+
+.btn.animacion::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc(-100% - 80px);
+	border-bottom: 80px solid var(--colorLinkHover);
+	border-right: 80px solid transparent;
+	transition: .4s ease-in-out all;
+}
+
+.btn.animacion:hover::after {
+	left: 0;
+}
+
+/* -- Carrito --------------------------*/
+.carrito {
+    position: fixed;
+    right: -2px;
+    bottom: 100px;
+    background-color: var(--colorLinkHover);
+    border: 2px solid var(--colorLink);
+    border-radius: 25% 0 0 25%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.carrito_ocultar {
+    display: none;
+}
+
+.carrito:hover {
+    transform: scale(1.2);
+}
+
+.carrito-cont {
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    margin: -10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--colorLLamativo);
+    color: var(--colorLink);
+    border: 2px solid var(--colorLink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrito img {
+    width: 50px;
+    height: 50px;
+}
+
+/* -- NavBar ------------------------------------------------------ */
+/* ---------------------------------------------------------------- */
+.navBar-contenedor {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: var(--colorNavBarFondo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+
+.navBar-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.navBar-logo:hover {
+    font-size: 100%;
+    text-decoration: none;
+}
+
+.navBar-logo img {
+    height: 45px;
+    margin-right: 10px;
+}
+
+.navBar-logo h1 {
+    font-family: fuenteLogo;
+    animation: logoTxtAnim 4s infinite;
+}
+
+@keyframes logoTxtAnim {
+    0% {
+        color: var(--colorLinkHover);
+    }
+    33.3% {
+        color: var(--colorLLamativo);
+    }
+    66.6% {
+        color: var(--colorLink);
+    }
+    100% {
+        color: var(--colorLinkHover);
+    }
+  }
+
+.navBar-btn {
+    display: inline-block;
+    cursor: pointer;
+    display: none;
+    padding-right: 20px;
+}
+
+.navBar-btnD1, .navBar-btnD2, .navBar-btnD3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--colorLink);
+    border-radius: 4px;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.navBar-btn_click .navBar-btnD1 {
+    transform: translateY(11px) rotate(45deg);
+    background-color: var(--colorLinkHover);
+}
+
+.navBar-btn_click .navBar-btnD2 {
+    opacity: 0;
+}
+
+.navBar-btn_click .navBar-btnD3 {
+    transform: translateY(-11px) rotate(-45deg);
+    background-color: var(--colorLinkHover);
+}
+
+.navBar-links {
+    margin-right: 20px;
+}
+
+.navBar-links > a {
+    margin-left: 10px;
+}
+
+@media (max-width: 767.98px) {
+    .navBar-btn {
+        display: block;
+    }
+
+    .navBar-links {
+        position: fixed;
+        display: grid;
+        top: 60px;
+        background-color: var(--colorNavBarFondo);
+        text-align: center;
+        width: 100%;
+        left: 100%;
+        transition: 0.4s;
+    }
+
+    .navBar-links_noOcultar {
+        left: 0;
+    }
+
+    .navBar-links a {
+        padding: 10px;
+    }
+}
+
+/* -- Main -------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+.main-contenedor {
+    position: relative;
+    top: 60px;
+    margin-bottom: 50px;
+    /* padding-top: 10px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* -- Carrusel Categorias ----------------------------------------- */
+/* ---------------------------------------------------------------- */
+.carruzel-contenedor {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.carruzel-btn-contenedor {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carruzel-btn-contenedor button {
+    border: none;
+    text-decoration: none;
+    background-color: var(--colorLink);
+    color: var(--colorBtn);
+    font-size: 60px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 70px;
+    border-radius: 50%;
+    margin: -130px 20px 60px 20px;
+    border: 1px solid var(--colorComandaLinea);
+    z-index: 1;
+}
+
+.carruzel-contenedor button:hover {
+    color: var(--colorLink);
+    background-color: var(--colorLinkHover);
+}
+
+.carruzel {
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+}
+
+.carruzel-item {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.carruzel-item_noOcultar {
+    animation-name: fadeIn;
+}
+
+.carruzel-item_ocultar {
+    animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+ @keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.carruzel-item h1 {
+    text-shadow: 0 0 3px var(--colorNavBarFondo), 0 0 5px var(--colorNavBarFondo);
+    color: var(--colorLinkHover);
+    background: linear-gradient(90deg, var(--colorLink) 0%, rgba(255, 255, 255, 0.577) 50%, rgba(255, 255, 255, 0) 100%);
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* -- Acordion ---------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+.acordion-list {
+    max-width: 1000px;
+    margin: 0 10px 20px 10px;
+}
+
+.acordion-list-titulo {
+    background-color: var(--colorLLamativo);
+    color: var(--colorLink);
+    text-align: center;
+    outline: none;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.acordion {
+    background-color: var(--colorNavBarFondo);
+    color: var(--colorLink);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .acordion:hover {
+    background-color: var(--colorLinkHover);
+}
+
+.acordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.acordion-contenido {
+    padding: 0 18px;
+    background-color: var(--colorTransparente);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    display: grid;
+    text-align: justify;
+    margin-bottom: 1px;
+  }
+
+.acordion-contenido-img {
+    height: 200px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+/* -- Comanda ----------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+.comanda {
+    position: fixed;
+    max-width: 1000px;
+    width: 100%;
+    height: 80%;
+    background-color: var(--colorComandaFondo);
+    color: var(--colorLink);
+    border-radius: 5px;
+    display: none;
+    z-index: 3;
+}
+
+.comanda_noOcultar {
+    display: block;
+}
+
+.comanda-btn-cerrar {
+    width: 50px;
+    margin-left: auto;
+}
+
+.comanda-btn-pedir {
+    display: flex;
+    margin-bottom: 10PX;
+}
+
+.comanda-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comanda-item {
+    text-decoration: none;
+    height: 30px;
+    border: 1px solid var(--colorComandaLinea);
+    margin-top: -1px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px 70px 0 10px;
+}
+
+.comanda-item:hover{
+    background-color: var(--colorLLamativo);
+}
+
+.comanda-item-total {
+    padding: 20px;
+    text-align: center;
+    color: var(--colorLinkHover);
+}
+
+.comanda-item-eliminar {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background-color: var(--colorLLamativo);
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.comanda-seccionPedir {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+
+

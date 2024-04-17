@@ -1,0 +1,23 @@
+header{
+    background-color: black;
+    color: white;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+.tarjeta-contenedor {
+    background-color: rgb(158, 158, 158);
+    border-radius: 4px;
+    color: white;
+    margin: 1rem;
+    text-align: center;
+    padding: 1rem;
+    max-width: 15rem;   
+}
+
+.tarjeta-contenedor img {
+    height: 4rem;
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M3 - ABP AE1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/index.css">
+</head> 
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <div class="text-center">
+    <map name="mapa" class="figuras">
+      <area id="1" shape="circle" coords="40,100,15" href=""  />
+      <area id="2" shape="circle" coords="90,100,15" href="" />
+      <area id="3" shape="rectangle" coords="150,50,230,130" href="" />
+      <area id="4" shape="rectangle" coords="270,50,390,150" href="" />
+      <area id="5" shape="rectangle" coords="400,100,490,160" href="" />
+      <area id="6" shape="circle" coords="510,140,20" href="" />
+      <area id="7" shape="circle" coords="550,130,20" href="" />
+      <area id="8" shape="circle" coords="580,140,20" href="" />
+      <area id="9" shape="circle" coords="620,160,20" href="" />
+      <area id="10" shape="circle" coords="660,170,15" href="" />
+      <area id="11" shape="circle" coords="695,170,15" href="" />
+      <area id="12" shape="circle" coords="750,180,30" href="" />
+      <area id="13" shape="circle" coords="800,190,15" href="" />
+      <area id="14" shape="rectangle" coords="825,175,925,215" href="" />
+      <area id="15" shape="rectangle" coords="950,175,1155,255" href="" />
+      <area id="16" shape="rectangle" coords="1180,125,1450,255" href="" />
+    </map>
+    </map>
+    <img src="https://aprotur.cl/wp-content/uploads/2020/07/sur.png" usemap="#mapa" >
+  </div>
+
+  <div class="card-contenedor">
+
+    <div class="container text-center">
+      <div class="card-modificar">
+        <label id="idRegion"><span>Index Region:</span>N</label>
+        <input id="idImg" type="file" name="Sin Imagen" id="">
+        <input id="idNomRegion" type="text" name="" id="" placeholder="Ingrese Nombre Región">
+        <textarea id="idAtraccion" name="" id="" cols="30" rows="10" placeholder="Ingrese Atracciones"></textarea>
+        <button id="btnGuardar">Guardar</button>
+      </div>
+    </div>
+  
+    <div class="container text-center">
+      <div class="card">
+        <img src="#" class="card-img-top shadow" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Región:</h5>
+          <p class="card-text" id="atractivos">Atractivos: </p>
+        </div>
+      </div>
+    </div>  
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="./js/data.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>

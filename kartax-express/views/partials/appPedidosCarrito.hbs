@@ -1,0 +1,143 @@
+<button class="pedidosCarrito">
+    <img src="/img/kartax/cart2.svg">
+    <span class="pedidosCarrito-cont">0</span>
+</button>
+
+<section class="pedidos">
+    <div>
+        <div class="pedidos-cabecera">
+            {{#each negocio}}
+            <img src={{logo}}>
+            <label id={{id_mesa}} class="comanda-titulo">PEDIDOS (mesa: {{id_mesa}})</label>
+            {{/each}}
+            <span class="comanda-btn2">&#x2715;</span>
+        </div>
+        <ul class="pedidos-item">
+        </ul>
+    </div>
+    <div class="pedidos-total">
+        <span><strong>TOTAL: 0</strong></span>
+        <button class="comanda-btn2">Pagar</button>
+    </div>
+</section>
+
+<script>
+    // la funcion se ejecuta cuando la app se carga por primera vez
+    getPedidosActivos();
+
+    // carga los items de la comanda activa en la comanda del front
+    async function getPedidosActivos() {
+        //obtiene idMesa del componente que se encuentra en el partial appComanda
+        const idMesa =  document.querySelector(".comanda-titulo").id;
+
+        if (idMesa) {
+            try {
+                let html = "";
+                // la funcion llama a fetch desde index
+                const itemComanda = await get_Pedidos_ByIdMesa(idMesa);
+    
+                itemComanda.forEach(e => {
+                    html += `
+                    <li id=${e.id}>
+                        <span id=${e.id_item}>
+                            <span hidden>&#x2713;</span>
+                            <label>${e.nombre}</label>
+                        </span>
+                        <label>${e.precio}</label>
+                    </li>`;
+                }); 
+
+                // se agrega la cantidad de pedidos activos en el carrito pedidos
+                const pedidosCarritoCont = document.querySelector(".pedidosCarrito-cont");
+                pedidosCarritoCont.textContent = itemComanda.length;
+
+                // se prepara el total a los pedidos activos para cargarlos con el sub total
+                const pedidosTotal = document.querySelector(".pedidos-total strong");
+                const total = `TOTAL: ${itemComanda.reduce((cont, valor) => cont + valor.precio, 0)}`;
+                pedidosTotal.textContent = total 
+
+                // se renderiza todos los pedidos activos de la mesa
+                const listaPedidosItem = document.querySelector(".pedidos-item");
+                listaPedidosItem.innerHTML = html;
+
+                listaPedidosItem.childNodes.forEach(li => {
+                    li.addEventListener("click", () => {
+                        const check = li.childNodes[0].nextElementSibling.children[0];
+                        check.hidden ? check.hidden = false : check.hidden = true;
+          
+                        li.classList.toggle("pedidos-item-li_check");
+
+                        // se carga el Total y el SubTotal
+                        pedidosTotal.textContent = `${total} - SUBTOTAL: ${subtotal()}`; 
+                    });
+                });
+            } catch (err) {
+                console.log(`Error: en la conexion a la API (Pedidos Carrito linea 34), Detalle: ${err}`);
+            };
+        };
+    };
+
+    // obtiene el sub total de lo que se va a pagar 
+    function subtotal(total) {
+        let subT = 0;
+        const listaPedidosItem = document.querySelector(".pedidos-item");
+        listaPedidosItem.childNodes.forEach(li => {
+            if (li.className === "pedidos-item-li_check") {
+                subT += parseInt(li.children[1].textContent);
+            };
+        });
+
+       return parseInt(subT);
+    };
+
+    // hacer visible contendio del los pedidos activos con el btn pedidosCarrito
+    const pedidosCarrito = document.querySelector(".pedidosCarrito");
+    pedidosCarrito.addEventListener("click", () => {
+        const pedidos = document.querySelector(".pedidos");
+        pedidos.classList.add("comanda-visible");
+    });
+
+    // boton para ocultar los pedidos activos
+    const btnCerrarPedidos = document.querySelector(".pedidos-cabecera span");
+    btnCerrarPedidos.addEventListener("click", () => {
+        const pedidos = document.querySelector(".pedidos");
+        pedidos.classList.remove("comanda-visible");
+    });
+
+    // se pagan los pedidos activos parcialmente o totales
+    const pedidosTotal = document.querySelector(".pedidos-total");
+    pedidosTotal.addEventListener("click", async () => {
+        // oculta el contenedor de pedidos
+        const pedidos = document.querySelector(".pedidos");
+        pedidos.classList.remove("comanda-visible");
+        
+        const arrPagarItems = []
+        const listaPedidosItem = document.querySelector(".pedidos-item").childNodes;
+        
+        if (listaPedidosItem.length > 0) {
+            // visibiliza el Loader
+            renderLoading2.classList.add("loading-contenedor2_visible");
+
+            listaPedidosItem.forEach(li => {
+                if (li.className === "pedidos-item-li_check") {
+                    arrPagarItems.push({
+                        id: li.id,
+                        id_item: li.children[0].id,
+                    });
+                };
+            });
+
+            try {
+                const obj = { arrItem: arrPagarItems };
+                //esta funcion llama al fetch desde index
+                const res = await put_HacerPedido( obj);
+                await getPedidosActivos();
+                // oculta el Loader
+                renderLoading2.classList.remove("loading-contenedor2_visible");
+            } catch (err) {
+                console.log(`Error: en la conexion a la API (Pedidos Carrito linea 130), Detalle: ${err}`);
+            };
+        };
+    });
+
+</script>

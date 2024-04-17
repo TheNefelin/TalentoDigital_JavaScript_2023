@@ -1,0 +1,11 @@
+
+{
+    "localidad 1": { "bandera": "africa.svg", "Continente": "África", "País": "Angola", "Capital": "Luanda" }, 
+    "localidad 2": { "bandera": "usa.svg", "Continente": "América del Norte", "País": "Estados Unidos", "Capital": "Washington DC" },
+    "localidad 3": { "bandera": "mexico.svg", "Continente": "América Central", "País": "México", "Capital": "Ciudad de México" }, 
+    "localidad 4": { "bandera": "brasil.svg", "Continente": "América del Sur", "País": "Brasil", "Capital": "Brasilia" }, 
+    "localidad 5": { "bandera": "spain.svg", "Continente": "Europa", "País": "España", "Capital": "Madrid" }, 
+    "localidad 6": { "bandera": "germania.svg", "Continente": "Europa", "País": "Alemania", "Capital": "Berlín" }, 
+    "localidad 7": { "bandera": "australia.svg", "Continente": "Oceanía", "País": "Australia", "Capital": "Camberra" }, 
+    "localidad 8": { "bandera": "japan.svg", "Continente": "Asia", "País": "Japón", "Capital": "Tokio" } 
+}

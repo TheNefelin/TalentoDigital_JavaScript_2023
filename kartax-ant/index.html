@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./img/logo_01.ico">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <title>Kartax</title>
+</head>
+<body>
+
+    <!-- NavBar --------------------------------------->
+    <header>
+        <nav class="navBar-contenedor">
+            <a class="navBar-logo" href="#">
+                <img src="./img/logo_01.png" alt="">
+                <h1>Kartax</h1>
+            </a>
+            <div class="navBar-btn" onclick="navBarBtn_click()">
+                <div class="navBar-btnD1"></div>
+                <div class="navBar-btnD2"></div>
+                <div class="navBar-btnD3"></div>
+            </div>
+            <div class="navBar-links">
+                <!-- Los links se cargan de forma dinamiga desde getMenuLinks() -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenedor Principal ------------------------->
+    <main class="main-contenedor">
+
+        <!-- Carrito ---------------------------------->
+        <button class="carrito" onclick="comanda_ver()">
+            <img src="./img/cart.svg">
+            <span class="carrito-cont">0</span>
+        </button>
+
+        <!-- Carruzel --------------------------------->
+        <div class="carruzel-contenedor">
+            <div class="carruzel">
+                <!-- Aqui se cargan los items del carruzel desde getCarruselCateg() -->
+            </div>
+
+            <div class="carruzel-btn-contenedor">
+                <button class="carruzel-btnL" onclick="carrusel_btnMover_click(-1)">&#10094;</button>
+                <button class="carruzel-btnR" onclick="carrusel_btnMover_click(1)">&#10095;</button>
+            </div>
+            
+        </div>
+
+        <!-- Acordion  -------------------------------->
+        <div class="acordion-list">
+            <!-- Aqui se cargan todos los productos por categoria desde acordion_llenarItems() -->
+        </div>
+                
+        <!-- Comanda  --------------------------------->
+        <div class="comanda">
+            <div class="comanda-btn-cerrar">
+                <button class="btn animacion" onclick="comanda_ocultar()"><span>X</span></button>
+            </div>
+            <ul class="comanda-items">
+                <!-- Aqui se carga la lista de pedidos (la comanda) desde agregarItem_click(obj) -->
+            </ul>
+            <div class="comanda-seccionPedir">
+                <div class="comanda-item-total">TOTAL: 0</div>
+                <div class="comanda-btn-pedir">
+                    <button class="btn animacion"><span>Hacer Pedido</span></button>
+                </div>        
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie ------------------------------------------>
+    <footer>
+        <audio src="./audio/Remnant_From_the_Ashes.mp3" autoplay></audio>
+    </footer>
+    <!------------------------------------------------->
+
+    <script src="./js/data.js"></script>
+    <script src="./js/jquery-3.6.3.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
